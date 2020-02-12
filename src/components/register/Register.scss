@@ -1,0 +1,19 @@
+.d-container {
+  width: 60%;
+  margin: 20px auto;
+  h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+  > p {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+  form {
+    input {
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+header {
+  background-color: #343a40;
+
+  padding: 13px 0;
+  .home {
+    a:first-child {
+      font-size: 1.25rem;
+      color: white;
+      white-space: nowrap;
+      margin-right: 20px;
+    }
+    .url-profile {
+      color: rgba(255, 255, 255, 0.5);
+      &:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+  }
+  ul {
+    li {
+      a {
+        color: rgba(255, 255, 255, 0.5);
+        &:hover {
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+    }
+  }
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+}
