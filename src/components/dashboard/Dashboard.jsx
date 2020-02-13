@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { withRouter, Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
@@ -69,7 +69,6 @@ const Dashboard = (props) => {
                                 <>
                                     {currentUser && <p className="lead text-muted">Wellcome {currentUser.name} </p>}
                                     <p>You have not yet setup a profile, please add some info</p>
-                                    {/* <Link className="btn btn-info" to="/create-profile">Create Profile</Link> */}
                                     <button className="btn btn-info" onClick={handleCreate}>Create Profile</button>
 
                                 </>

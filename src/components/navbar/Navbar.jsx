@@ -3,7 +3,7 @@ import './Navbar.scss'
 import { NavLink, withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/loginAction';
-const Navbar = (props) => {
+const Navbar = () => {
     const user = useSelector(state => state.authReducer.currentUser)
     const isAuth = useSelector(state => state.authReducer.isAuthenticated);
     const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const Navbar = (props) => {
                             <NavLink to="/signup"> Sign Up</NavLink>
                         </li>
                         <li>
-                            {/* <a href="" onClick={redirectLogin}> Login</a> */}
                             <NavLink to="/login"> Login</NavLink>
                         </li>
                     </ul>

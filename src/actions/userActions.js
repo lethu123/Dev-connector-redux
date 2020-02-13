@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LIST_USER, GET_PROFILE, DETAIL_USER, api_user, api_profile, api_experience, api_education } from './types';
 import { isLoading } from './loadingAction';
-import { getToken, isAuth } from './authAction';
+import { getToken } from './authAction';
 import { handleError } from './errorsAction';
 import { toast } from 'react-toastify';
 import { logout } from './loginAction';
@@ -56,7 +56,6 @@ export const getProfileUser = () => (dispatch) => {
             })
 
         })
-        // dispatch(isLoading(false))
     }
 }
 export const clearProfile = () => dispatch => {
@@ -70,7 +69,6 @@ export const createProfile = data => dispatch => {
     let token = getToken();
     axios.post(api_profile, data, { headers: { 'Authorization': token } })
         .then(res => {
-            console.log("res", res.data);
             dispatch({
                 type: GET_PROFILE,
                 profile: res.data
@@ -101,14 +99,11 @@ export const deleteEXP = id => dispatch => {
     let token = getToken();
     if (token !== "not token") {
         axios.delete(api_deleteExp, { headers: { 'Authorization': token } }).then(res => {
-            // dispatch(handleClearError());
             dispatch(getProfileUser());
             toast.success("Delete successfully!", {
                 position: toast.POSITION.TOP_RIGHT
             });
         }).catch(error => {
-
-            // dispatch(handleError(error.response.data));
             toast.error(error.response.data.experiencenotfound, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -137,14 +132,11 @@ export const deleteEDU = id => dispatch => {
     let token = getToken();
     if (token !== "not token") {
         axios.delete(api_deleteEdu, { headers: { 'Authorization': token } }).then(res => {
-            // dispatch(handleClearError());
             dispatch(getProfileUser());
             toast.success("Delete successfully!", {
                 position: toast.POSITION.TOP_RIGHT
             });
         }).catch(error => {
-
-            // dispatch(handleError(error.response.data));
             toast.error(error.response.data.educationnotfound, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -161,6 +153,6 @@ export const deleteAccount = () => dispatch => {
         });
         dispatch(logout());
     }).catch(error => {
-        console.log("erroe", error.response.data);
+        console.log("error", error.response.data);
     })
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { regexpName, status } from '../../actions/types';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -11,7 +11,6 @@ import { Redirect } from 'react-router-dom';
 
 const CreateProfile = (props) => {
     const isAuth = useSelector(state => state.authReducer.isAuthenticated);
-    const error = useSelector(state => state.errorsReducer);
     const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
@@ -43,7 +42,7 @@ const CreateProfile = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         var validHandle = regexpName.test(formData.handle);
-        if (validHandle && formData.status && formData.skills) {
+        if (validHandle && formData.handle && formData.status !== "" && formData.skills) {
             dispatch(createProfile(formData));
             props.history.push("/dashboard");
         } else {

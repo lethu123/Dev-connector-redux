@@ -7,7 +7,6 @@ import { loadPosts, postFeed } from '../../actions/postsAction';
 import { isLoading } from '../../actions/loadingAction';
 import { ToastContainer } from 'react-toastify';
 
-import isEmpty from "../common/is-empty";
 import TextAreaGroup from "../common/TextAreaGroup";
 import Feeds from './Feeds';
 

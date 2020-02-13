@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import './Home.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentUser } from '../../actions/authAction';
-
-
+import { useSelector } from 'react-redux';
 
 const Home = (props) => {
     const isAuth = useSelector(state => state.authReducer.isAuthenticated);

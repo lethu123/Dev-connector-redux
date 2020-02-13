@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 
 // get list posts
 export const loadPosts = () => async dispatch => {
-    // dispatch(isLoading(true))
     const resLoadPosts = await axios.get(api_posts);
     dispatch({
         type: GET_POSTS,
@@ -21,7 +20,6 @@ export const loadPosts = () => async dispatch => {
 // post 
 export const postFeed = data => dispatch => {
     let token = getToken();
-    console.log("data", data)
     if (token !== "not token") {
         axios.post(api_posts, data, { headers: { 'Authorization': token } })
             .then(res => {
@@ -32,9 +30,6 @@ export const postFeed = data => dispatch => {
                 });
             }).catch(error => {
                 dispatch(handleError(error.response.data))
-                // toast.error(error.response.data, {
-                //     position: toast.POSITION.TOP_RIGHT
-                // });
             })
     }
 }
@@ -51,8 +46,6 @@ export const deleteFeed = id => dispatch => {
                 position: toast.POSITION.TOP_RIGHT
             });
         }).catch(error => {
-
-            // dispatch(handleError(error.response.data));
             toast.error(error.response.data.postnotfound, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -72,7 +65,6 @@ export const likeFeed = id => dispatch => {
                 position: toast.POSITION.TOP_RIGHT
             });
         }).catch(error => {
-            // dispatch(handleError(error.response.data));
             toast.error(error.response.data.alreadyliked, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -92,7 +84,6 @@ export const unlikeFeed = id => dispatch => {
                 position: toast.POSITION.TOP_RIGHT
             });
         }).catch(error => {
-            // dispatch(handleError(error.response.data))
             toast.error(error.response.data.notliked, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -132,9 +123,6 @@ export const replyComment = (data, id) => dispatch => {
                 });
             }).catch(error => {
                 dispatch(handleError(error.response.data))
-                // toast.error(error.response.data, {
-                //     position: toast.POSITION.TOP_RIGHT
-                // });
             })
     }
 }

@@ -5,7 +5,6 @@ import { login } from '../../actions/loginAction';
 import TextFieldGroup from '../common/TextFieldGroup';
 import './Login.scss';
 const Login = (props) => {
-    // const isLoading = useSelector(state => state.handleReducer.isLoading);
     const isAuth = useSelector(state => state.authReducer.isAuthenticated);
     const error = useSelector(state => state.errorsReducer);
     const dispatch = useDispatch();
@@ -51,8 +50,6 @@ const Login = (props) => {
                         <TextFieldGroup error={error.password} value={formData.password} type="password" placeholder="password" onChange={handleChange} name="password" />
                         <div className="form-group">
                             <button className="btn btn-info btn-block flexbox" type="password" disabled={isDisabled}><div style={{ display: "inline" }} className="mr-4">Submit</div> </button>
-
-                            {/* <button className="btn btn-info btn-block flexbox" disabled={isDisabled}><div style={{ display: "inline" }} className="mr-4">Submit</div>  {isLoading ? <div className="spinner-border text-warning"></div> : ""}</button> */}
                         </div>
                     </form>
                 </div>

@@ -48,16 +48,4 @@ export const status = [
     "Other"
 ];
 
-// export const status1 = [
-//     { index: 0, position: "* Select Professional Status" },
-//     { index: 1, position: "Developer" },
-//     { index: 2, position: "Junior Developer" },
-//     { index: 3, position: "Senior Developer" },
-//     { index: 4, position: "Manager" },
-//     { index: 5, position: "Student or Learning" },
-//     { index: 6, position: "Instructor or Teacher" },
-//     { index: 7, position: "Intern" },
-//     { index: 8, position: "Other" }
-// ]
-
 

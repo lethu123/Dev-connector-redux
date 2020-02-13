@@ -1,4 +1,4 @@
-import { LOADING, CLEAR_ERRORS, GET_ERRORS } from '../actions/types';
+import { LOADING } from '../actions/types';
 
 const initialState = {
     isLoading: false

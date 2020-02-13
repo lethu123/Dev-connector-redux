@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import jwt from 'jwt-decode';
 import './App.scss';
 import {
@@ -8,8 +8,7 @@ import {
 } from "react-router-dom";
 import { isAuth, getCurrentUser } from './actions/authAction';
 import { logout } from './actions/loginAction';
-import { useDispatch, useSelector } from 'react-redux';
-import { DASHBOARD } from './actions/types';
+import { useDispatch } from 'react-redux';
 import Navbar from './components/navbar/Navbar';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
@@ -19,8 +18,8 @@ import User from './components/users/User';
 import Detail from './components/users/Detail';
 import Dashboard from './components/dashboard/Dashboard';
 import Feed from './components/feed/Feed';
-import EditProfile from './components/users/EditProfile';
-import CreateProfile from './components/users/CreateProfile';
+// import EditProfile from './components/users/EditProfile';
+// import CreateProfile from './components/users/CreateProfile';
 
 import Comment from './components/comments/Comment';
 import ExperienceForm from './components/experiences/ExperienceForm';
@@ -28,7 +27,6 @@ import EducationForm from './components/educations/EducationForm';
 import FormProfile from './components/users/FormProfile';
 
 const App = () => {
-  // const currentUser = useSelector(state => state.authReducer.currentUser);
   const dispatch = useDispatch();
   const getUserLocalStorage = localStorage.getItem("token");
   try {

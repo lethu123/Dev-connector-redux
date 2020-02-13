@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { regexpEmail, regexpName, regexpPass } from '../../actions/types';
+import { regexpName, regexpPass } from '../../actions/types';
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../../actions/registerAction';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -46,7 +46,6 @@ const Register = (props) => {
         e.preventDefault();
         var validName = regexpName.test(formData.name);
         var validPass = regexpPass.test(formData.password);
-        // var validEmail = regexpEmail.test(email);
         if (validName && validPass && formData.password === formData.password2) {
             dispatch(register(formData, props.history));
         } else {

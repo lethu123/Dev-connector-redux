@@ -7,16 +7,13 @@ import InputGroup from '../common/InputGroup';
 import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import { getProfileUser, createProfile } from '../../actions/userActions';
-import { isLoading } from '../../actions/loadingAction';
 import isEmpty from "../common/is-empty";
-import { createSelector } from 'reselect'
 
 const EditProfile = (props) => {
 
     const isAuth = useSelector(state => state.authReducer.isAuthenticated);
     const _isLoading = useSelector(state => state.loadingReducer.isLoading);
     const profile = useSelector(state => state.userReducer.profile);
-    // const error = useSelector(state => state.errorsReducer);
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         handle: '',
@@ -41,12 +38,8 @@ const EditProfile = (props) => {
     const [active, setActive] = useState(false);
 
     useEffect(() => {
-        console.log("cleanup");
-        // dispatch(isLoading(true))
         dispatch(getProfileUser());
-        return () => {
-            console.log("cleanup");
-        };
+        return () => { };
     }, []);
 
     useEffect(() => {
@@ -61,7 +54,6 @@ const EditProfile = (props) => {
                 ? profile.githubusername
                 : '';
             let _bio = !isEmpty(profile.bio) ? profile.bio : '';
-            // let _social = !isEmpty(profile.social) ? profile.social : {};
             let _twitter = '';
             let _facebook = '';
             let _linkedin = '';
@@ -103,10 +95,7 @@ const EditProfile = (props) => {
                 instagram: _instagram
             })
         }
-        return () => {
-            console.log("clean up")
-
-        };
+        return () => { };
     }, [profile])
 
 
@@ -115,7 +104,6 @@ const EditProfile = (props) => {
     }
 
     const handleSubmit = (e) => {
-        console.log("tets thoi")
         e.preventDefault();
         var validHandle = regexpName.test(formData.handle);
         if (validHandle && formData.handle && formData.status !== "* Select Professional Status" && formData.skills) {
