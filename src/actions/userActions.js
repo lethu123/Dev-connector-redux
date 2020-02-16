@@ -9,6 +9,7 @@ import { logout } from './loginAction';
 
 // get list user
 export const loadUsers = () => {
+    getToken();
     return async dispatch => {
         dispatch(isLoading(true))
         const resLoadUser = await axios.get(api_user);
@@ -22,6 +23,7 @@ export const loadUsers = () => {
 
 // get profile user
 export const getDetailUser = (handle) => {
+    getToken();
     const api_handle = `/profile/handle/${handle}`;
     return dispatch => {
         dispatch(isLoading(true));
@@ -39,7 +41,7 @@ export const getDetailUser = (handle) => {
 // load profile in dashboard
 export const getProfileUser = () => (dispatch) => {
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.get(api_profile, { headers: { 'Authorization': token } }).then(res => {
 
             dispatch({
@@ -97,7 +99,7 @@ export const addExperience = (data) => dispatch => {
 export const deleteEXP = id => dispatch => {
     const api_deleteExp = `/profile/experience/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.delete(api_deleteExp, { headers: { 'Authorization': token } }).then(res => {
             dispatch(getProfileUser());
             toast.success("Delete successfully!", {
@@ -130,7 +132,7 @@ export const addEducation = (data) => dispatch => {
 export const deleteEDU = id => dispatch => {
     const api_deleteEdu = `/profile/education/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.delete(api_deleteEdu, { headers: { 'Authorization': token } }).then(res => {
             dispatch(getProfileUser());
             toast.success("Delete successfully!", {

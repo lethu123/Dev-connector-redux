@@ -22,5 +22,5 @@ export const login = (data, history) => dispatch => {
 export const logout = () => dispatch => {
     localStorage.removeItem("token");
     dispatch(isAuth(false));
-    window.location.href = "/login";
+    window.location.href = window.location.origin + "/login";
 }

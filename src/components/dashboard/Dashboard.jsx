@@ -67,7 +67,7 @@ const Dashboard = (props) => {
                                 </>
                                 :
                                 <>
-                                    {currentUser && <p className="lead text-muted">Wellcome {currentUser.name} </p>}
+                                    {currentUser && <p className="lead text-muted">Wellcome  {currentUser.name} </p>}
                                     <p>You have not yet setup a profile, please add some info</p>
                                     <button className="btn btn-info" onClick={handleCreate}>Create Profile</button>
 

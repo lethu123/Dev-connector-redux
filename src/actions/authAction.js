@@ -14,18 +14,18 @@ export const isAuth = (status) => {
 // get user by token
 export const getToken = () => {
     const getUserLocalStorage = localStorage.getItem("token");
-    try {
-        if (getUserLocalStorage) {
-            let token = jwt(getUserLocalStorage);
-            if (token.exp < Date.now() / 1000) {
-                localStorage.removeItem("token");
-                return "not token";
-            }
-            return getUserLocalStorage;
+    if (getUserLocalStorage) {
+        let token = jwt(getUserLocalStorage);
+        if (token.exp < Date.now() / 1000) {
+            localStorage.removeItem("token");
+            window.location.href = "/login";
+            return;
         }
-    } catch (err) {
+        return getUserLocalStorage
+    } else {
         localStorage.removeItem("token");
-        return "not token";
+        window.location.href = "/login";
+        return;
     }
 }
 

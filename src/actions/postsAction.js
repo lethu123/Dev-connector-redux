@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 // get list posts
 export const loadPosts = () => async dispatch => {
+    getToken();
     const resLoadPosts = await axios.get(api_posts);
     dispatch({
         type: GET_POSTS,
@@ -20,7 +21,7 @@ export const loadPosts = () => async dispatch => {
 // post 
 export const postFeed = data => dispatch => {
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.post(api_posts, data, { headers: { 'Authorization': token } })
             .then(res => {
                 dispatch(handleClearError());
@@ -38,7 +39,7 @@ export const postFeed = data => dispatch => {
 export const deleteFeed = id => dispatch => {
     const api_deletePost = `/posts/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.delete(api_deletePost, { headers: { 'Authorization': token } }).then(res => {
             dispatch(handleClearError());
             dispatch(loadPosts());
@@ -57,7 +58,7 @@ export const deleteFeed = id => dispatch => {
 export const likeFeed = id => dispatch => {
     let api_like = `/posts/like/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.post(api_like, '', { headers: { 'Authorization': token } }).then(res => {
             dispatch(handleClearError());
             dispatch(loadPosts());
@@ -76,7 +77,7 @@ export const likeFeed = id => dispatch => {
 export const unlikeFeed = id => dispatch => {
     let api_unlike = `/posts/unlike/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.post(api_unlike, '', { headers: { 'Authorization': token } }).then(res => {
             dispatch(handleClearError());
             dispatch(loadPosts());
@@ -95,7 +96,7 @@ export const unlikeFeed = id => dispatch => {
 export const loadComments = id => dispatch => {
     let api_comments = `/posts/${id}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.get(api_comments, { headers: { 'Authorization': token } })
             .then(res => {
                 dispatch({
@@ -113,7 +114,7 @@ export const loadComments = id => dispatch => {
 export const replyComment = (data, id) => dispatch => {
     let token = getToken();
     let api_post_comment = `/posts/comment/${id}`;
-    if (token !== "not token") {
+    if (token) {
         axios.post(api_post_comment, data, { headers: { 'Authorization': token } })
             .then(res => {
                 dispatch(handleClearError());
@@ -131,7 +132,7 @@ export const replyComment = (data, id) => dispatch => {
 export const deleteComment = (idPost, idComment) => dispatch => {
     const api_delete_comment = `/posts/comment/${idPost}/${idComment}`;
     let token = getToken();
-    if (token !== "not token") {
+    if (token) {
         axios.delete(api_delete_comment, { headers: { 'Authorization': token } }).then(res => {
             dispatch(handleClearError());
             dispatch(loadComments(idPost));

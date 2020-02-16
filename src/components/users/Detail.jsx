@@ -60,31 +60,38 @@ const Detail = (props) => {
                                                 <p style={{ fontSize: "2.5rem" }}>
                                                     <span>
                                                         {isEmpty(dataUser.website) ? null :
-                                                            <Link className="text-white " to={dataUser.website} ><i className="fa fa-globe"></i></Link>}
+                                                            <a className="text-white " href={dataUser.website} target="_blank" rel="noopener noreferrer"><i className="fa fa-globe"></i></a>
+                                                        }
+                                                        {/* <Link className="text-white " to={dataUser.website} ><i className="fa fa-globe"></i></Link>} */}
                                                     </span>
                                                     {dataUser.social &&
                                                         <>
 
                                                             <span className="ml-3">
                                                                 {isEmpty(dataUser.social.twitter) ? null :
-                                                                    <Link className="text-white " to={dataUser.social.twitter} ><i className="fa fa-twitter"></i></Link>}
+                                                                    <a className="text-white " href={dataUser.social.twitter} target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i></a>
+                                                                }
                                                             </span>
                                                             <span className="ml-3">
                                                                 {isEmpty(dataUser.social.facebook) ? null :
-                                                                    <Link className="text-white " to={dataUser.social.facebook} ><i className="fa fa-facebook-square"></i></Link>}
+                                                                    <a className="text-white " href={dataUser.social.facebook} target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook-square"></i></a>
+                                                                }
                                                             </span>
                                                             <span className="ml-3">
 
                                                                 {isEmpty(dataUser.social.linkedin) ? null :
-                                                                    <Link className="text-white " to={dataUser.social.linkedin} ><i className="fa fa-linkedin"></i></Link>}
+                                                                    <a className="text-white " href={dataUser.social.linkedin} target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i></a>
+                                                                }
                                                             </span>
                                                             <span className="ml-3">
                                                                 {isEmpty(dataUser.social.youtube) ? null :
-                                                                    <Link className="text-white " to={dataUser.social.youtube} ><i className="fa fa-youtube"></i></Link>}
+                                                                    <a className="text-white " href={dataUser.social.youtube} target="_blank" rel="noopener noreferrer"><i className="fa fa-youtube"></i></a>
+                                                                }
                                                             </span>
                                                             <span className="ml-3">
                                                                 {isEmpty(dataUser.social.instagram) ? null :
-                                                                    <Link className="text-white " to={dataUser.social.instagram} ><i className="fa fa-instagram"></i></Link>}
+                                                                    <a className="text-white " href={dataUser.social.instagram} target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram"></i></a>
+                                                                }
                                                             </span>
 
 
@@ -99,9 +106,9 @@ const Detail = (props) => {
                                     <div className="card mt-4 p-4 bg-light">
                                         <div className="row">
                                             <div className="col-sm-12">
-                                                <h4 className="text-center text-info ">{dataUser.bio}'s BIO</h4>
+                                                <h4 className="text-center text-info ">{!isEmpty(dataUser.bio) ? dataUser.bio : dataUser.handle}'s BIO</h4>
                                                 {!isEmpty(dataUser.bio) ?
-                                                    <p className="lead">{dataUser.bio} does not have a bio</p>
+                                                    <p className="lead">{dataUser.bio}</p>
                                                     :
                                                     <p className="lead">{dataUser.handle} does not have a bio</p>
                                                 }
@@ -176,7 +183,7 @@ const Detail = (props) => {
                                     <hr className="m-auto" width="100%" />
                                     <div className="row mt-2">
                                         <div className="col-sm-12">
-                                            <h3 class="mb-4">Latest Github Repos</h3>
+                                            <h3 className="mb-4">Latest Github Repos</h3>
                                         </div>
                                     </div>
                                 </div>
