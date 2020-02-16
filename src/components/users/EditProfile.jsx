@@ -77,7 +77,6 @@ const EditProfile = (props) => {
                     : '';
             }
 
-
             setFormData({
                 ...formData,
                 handle: _handle,
